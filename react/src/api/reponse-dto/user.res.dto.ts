@@ -1,41 +1,50 @@
-
-export type Period = 's1' | 's2'
-
-
-export interface Topic{
+interface Subject {
+    id: number;
+    name: string;
     code: string;
-    title: string;
-    grade: number | null; // Note associée au sujet, peut être null si pas de note
-    semester: Period; // Semestre auquel le sujet est associé
-    
+    credits: number;
+    description: string;
+    active: boolean;
+    level: string; // "LEVEL1", "LEVEL2", etc.
+    cycle: string; // "BACHELOR", "MASTER"
+    semesterId: number;
+    semesterName: string;
+    departmentId: number;
+    departmentName: string;
+    teacherId: number;
+    teacherName: string;
+    createdDate: string | null;
+    lastModifiedDate: string | null;
 }
-
-// export interface Grade{
-//     id: number;
-//     studentId: number;
-//     topicCode: string;
-//     value: number;
-//     date: string; // Date au format ISO
-// }
 
 export interface userProfileResDto {
     id: number;
+    username: string;
     firstName: string;
     lastName: string;
     email: string;
-    username: string;
     role: string;
+    subjects: Subject[];
 }
+//
+// interface Topic {
+//     code: string,
+//     title: string,
+//     cc: number,
+//     sn: number,
+//     semester: string,
+//     credits:number
+// }
 
-export interface studentResDto {
-    id: number;
-    firstName: string;
-    lastName: string;
-    email: string;
-    username: string;
-    role: string;
-    topics: Topic[];
-    [key: string]: string | number | Topic[] ; // Permet d'ajouter dynamiquement des propriétés
-}
-
+// export interface studentResDto {
+//     id: number;
+//     firstName: string;
+//     lastName: string;
+//     email: string;
+//     username: string;
+//     role: string;
+//     level: string;
+//     topics: Topic[];
+//     [index: string]: any
+// }
 

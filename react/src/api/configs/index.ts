@@ -3,6 +3,12 @@ import {AuthService} from "../services/auth.service.ts";
 import {store} from "../../store";
 import {triggerClientNotification, triggerServerNotification} from "../../contexts";
 import { UserService } from '../services/user.service.ts';
+import { SubjectService } from '../services/subject.service';
+import { GradeService } from '../services/grade.service';
+import { SemesterService } from '../services/semester.service';
+import { AdminService } from '../services/admin.service';
+import { AdminReportsService } from '../services/admin-reports.service';
+import { GradingWindowsService } from '../services/grading-windows.service';
 
 
 const apiGatewayClient = axios.create({
@@ -41,7 +47,7 @@ apiGatewayClient.interceptors.response.use(
                 })
             );
         } // Send by client
-      else if (
+        else if (
             error instanceof AxiosError &&
             error.status &&
             error.status >= 400 &&
@@ -80,3 +86,11 @@ apiGatewayClient.interceptors.response.use(
 
 export const authService = new AuthService(apiGatewayClient);
 export const userService = new UserService(apiGatewayClient);
+export const subjectService = new SubjectService(apiGatewayClient);
+export const gradeService = new GradeService(apiGatewayClient);
+export const semesterService = new SemesterService(apiGatewayClient);
+export const adminService = new AdminService(apiGatewayClient);
+export const adminReportsService = new AdminReportsService(apiGatewayClient);
+export const gradingWindowsService = new GradingWindowsService(apiGatewayClient);
+
+export { apiGatewayClient };

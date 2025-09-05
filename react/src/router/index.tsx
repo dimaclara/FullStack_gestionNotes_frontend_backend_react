@@ -1,5 +1,6 @@
 import { redirect, type RouteObject } from "react-router-dom";
 import {
+  ChangePwdPage,
   Licence1,
   Licence2,
   Licence3,
@@ -9,13 +10,16 @@ import {
   Overview,
   RegisterPage,
 } from "../features";
+import { TeacherOverview } from "../features/teacher";
 import { AuthLayout } from "../layouts";
 import { Dashboard } from "../layouts/Dashboard.tsx";
 import { PrivateRoutes } from "../components/PrivateRoute.tsx";
 import { PageTitleProvider } from "../contexts";
 import NotFoundView from "../components/NotFoundView.tsx";
-import Semester1 from "../features/student/sem1/index.tsx";
-import Semester2 from "../features/student/sem2/index.tsx";
+import StudentPage from "../features/student/StudentPage.tsx";
+import AcademicPeriodsManager from "../features/admin";
+import { UsersManagement } from "../features/admin";
+import {SubjectsManagement} from "../features/admin/components/SubjectsManagement.tsx";
 
 export const routes: RouteObject[] = [
   {
@@ -38,9 +42,13 @@ export const routes: RouteObject[] = [
         path: "login",
         element: <LoginPage />,
       },
+      // {
+      //   path: "register",
+      //   element: <RegisterPage />,
+      // },
       {
-        path: "register",
-        element: <RegisterPage />,
+        path: "change-password",
+        element: <ChangePwdPage />,
       },
     ],
   },
@@ -65,6 +73,10 @@ export const routes: RouteObject[] = [
         element: <Overview />,
       },
       {
+        path: "teacher-overview",
+        element: <TeacherOverview />,
+      },
+      {
         path: "licence1",
         element: <Licence1 />,
       },
@@ -85,13 +97,21 @@ export const routes: RouteObject[] = [
         element: <Master2 />,
       },
       {
-        path: "semester1",
-        element: <Semester1 />,
+        path: "student",
+        element: <StudentPage/>,
       },
-      {
-        path: "semester2",
-        element: <Semester2 />,
-      },
+        {
+            path: 'periods',
+            element: <AcademicPeriodsManager/>
+        },
+        {
+            path: 'users',
+            element: <UsersManagement/>
+        },
+        {
+            path: 'subjects',
+            element: <SubjectsManagement/>
+        },
     ],
   },
   {

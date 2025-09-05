@@ -116,7 +116,7 @@ Users (id, username, password, role, email, first_name, last_name)
 {
   "admin": {
     "username": "admin",
-    "password": "admin123",
+    "password": "admin",
     "role": "ADMIN"
   },
   "teacher": {
